@@ -81,4 +81,15 @@ namespace OOP_p511
             Console.ReadLine();
         }
     }
+
+    public class Student
+    {
+        public string firstName;
+        public string lastName;
+        public int age;
+
+        public void Introduce() {
+            Console.WriteLine($"Привет, меня зовут {firstName} {lastName}, мне {age} лет");
+        }
+    }
 }
