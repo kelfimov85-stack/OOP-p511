@@ -20,7 +20,7 @@ namespace OOP_p511
 
             student2.firstName = "Анна";
             student2.lastName = "Сидорова";
-            student2.age = 20;
+            student2.age = 20; 
 
             Console.WriteLine(" Знакомство со студентами ");
             student1.Introduce();
