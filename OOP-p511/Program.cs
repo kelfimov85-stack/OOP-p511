@@ -6,36 +6,39 @@ using System.Threading.Tasks;
 
 namespace OOP_p511
 {
-    class User
-    {
-        public string name;
-        public string surname;
-        public int age;
-        public string city;
-
-        public User(string name, string surname, int age, string city)
-        {
-            this.name = name;
-            this.surname = surname;
-            this.age = age;
-            this.city = city;
-        }
-
-        public void GetInfo()
-        {
-            Console.WriteLine( $"name: {name}; surname: {surname}; age: {age}; city: {city}");
-        }
-    }
+    
     internal class Program
     {
         static void Main(string[] args)
         {
-            User user = new User("Leha", "Kudaibregenv", 13, "Tyumen");
+            Student student1 = new Student();
+            student1.firstName = "Иван";
+            student1.lastName = "Петров";
+            student1.age = 19;
 
-            user.GetInfo();
+            Student student2 = new Student();
+
+            student2.firstName = "Анна";
+            student2.lastName = "Сидорова";
+            student2.age = 20; 
+
+            Console.WriteLine(" Знакомство со студентами ");
+            student1.Introduce();
+            student2.Introduce();
 
             Console.ReadLine();
 
+        }
+    }
+
+    public class Student
+    {
+        public string firstName;
+        public string lastName;
+        public int age;
+
+        public void Introduce() {
+            Console.WriteLine($"Привет, меня зовут {firstName} {lastName}, мне {age} лет");
         }
     }
 }
