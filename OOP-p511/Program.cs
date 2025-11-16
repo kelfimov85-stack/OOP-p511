@@ -48,13 +48,36 @@ namespace OOP_p511
             }
         }
 
-        public double GetArea()
+        public double GetArea
         {
-            return _width * _height;
+            get
+            {
+                return _width * _height;
+            }
+            set
+            {
+                if (0 < value)
+                {
+                    _width = value;
+                    _height = value;
+                }else { Console.WriteLine(false); }
+            }
         }
-        public double GetPerimetr()
+        public double GetPerimetr
         {
-            return 2 * (_width + _height);
+            get
+            {
+                return 2 * (_width + _height);
+            }
+            set
+            {
+                if (0 < value)
+                {
+                    _width = value;
+                    _height = value;
+                }
+                else { Console.WriteLine(false); }
+            }
         }
 
         public Rectangle(double width, double height)
@@ -72,8 +95,8 @@ namespace OOP_p511
 
             Console.WriteLine($"Ширина: {rectangle1.Width}");
             Console.WriteLine($"Высота: {rectangle1.Height}");
-            Console.WriteLine($"Площадь: {rectangle1.GetArea()}");
-            Console.WriteLine($"Периметр: {rectangle1.GetPerimetr()}");
+            Console.WriteLine($"Площадь: {rectangle1.GetArea}");
+            Console.WriteLine($"Периметр: {rectangle1.GetPerimetr}");
 
             rectangle1.Width = -20;
             Console.WriteLine(rectangle1.Width);
