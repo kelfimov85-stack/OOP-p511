@@ -6,36 +6,79 @@ using System.Threading.Tasks;
 
 namespace OOP_p511
 {
-    class User
+    class Rectangle
     {
-        public string name;
-        public string surname;
-        public int age;
-        public string city;
+        private double _width;
+        private double _height;
 
-        public User(string name, string surname, int age, string city)
+        public double Width
         {
-            this.name = name;
-            this.surname = surname;
-            this.age = age;
-            this.city = city;
+            get
+            {
+                return _width;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    _width = value;
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка: ширина должна быть положительным числом!");
+                }
+            }
         }
 
-        public void GetInfo()
+        public double Height
         {
-            Console.WriteLine( $"name: {name}; surname: {surname}; age: {age}; city: {city}");
+            get
+            {
+                return _height;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    _height = value;
+                }else
+                {
+                    Console.WriteLine("Ошибка: высота должна быть положительным числом");
+                }
+            }
+        }
+
+        public double GetArea()
+        {
+            return _width * _height;
+        }
+        public double GetPerimetr()
+        {
+            return 2 * (_width + _height);
+        }
+
+        public Rectangle(double width, double height)
+        {
+            Width = width;
+            Height = height;
         }
     }
     internal class Program
     {
         static void Main(string[] args)
         {
-            User user = new User("Leha", "Kudaibregenv", 13, "Tyumen");
+            Console.WriteLine("Создаеи пряиоугольник");
+            Rectangle rectangle1 = new Rectangle(10, 5);
 
-            user.GetInfo();
+            Console.WriteLine($"Ширина: {rectangle1.Width}");
+            Console.WriteLine($"Высота: {rectangle1.Height}");
+            Console.WriteLine($"Площадь: {rectangle1.GetArea()}");
+            Console.WriteLine($"Периметр: {rectangle1.GetPerimetr()}");
+
+            rectangle1.Width = -20;
+            Console.WriteLine(rectangle1.Width);
 
             Console.ReadLine();
-
         }
     }
 }
