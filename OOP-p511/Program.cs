@@ -6,25 +6,14 @@ using System.Threading.Tasks;
 
 namespace OOP_p511
 {
-    
+
     internal class Program
     {
         static void Main(string[] args)
         {
-            Student student1 = new Student();
-            student1.firstName = "Иван";
-            student1.lastName = "Петров";
-            student1.age = 19;
+            Student student = new Student("Рома", "Елфимов", 14);
 
-            Student student2 = new Student();
-
-            student2.firstName = "Анна";
-            student2.lastName = "Сидорова";
-            student2.age = 20; 
-
-            Console.WriteLine(" Знакомство со студентами ");
-            student1.Introduce();
-            student2.Introduce();
+            Console.WriteLine(student.FullName);
 
             Console.ReadLine();
 
@@ -33,12 +22,90 @@ namespace OOP_p511
 
     public class Student
     {
-        public string firstName;
-        public string lastName;
-        public int age;
+        private string _firstName;
+        private string _lastName;
+        private int _age;
 
-        public void Introduce() {
-            Console.WriteLine($"Привет, меня зовут {firstName} {lastName}, мне {age} лет");
+        public string FirstName
+        {
+            get
+            {
+                return _firstName;
+            }
+            set
+            {
+                if (true)
+                {
+                    value = _firstName;
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка 1");
+                }
+            }
+        }
+        public string LastName
+        {
+            get
+            {
+                return _lastName;
+            }
+            set
+            {
+                if (true)
+                {
+                    value = _lastName;
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка 2");
+                }
+            }
+        }
+        public int Age
+        {
+            get
+            {
+                return _age;
+            }
+            set
+            {
+                if (value > 0 && value < 100)
+                {
+                    _age = value;
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка 3");
+                }
+            }
+        }
+
+        public Student(string firstName, string lastName, int age)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Age = age;
+        }
+
+        public string FullName
+        {
+            get
+            {
+                return FirstName + LastName;
+            }
+            set
+            {
+                if(true)
+                {
+                    _firstName = value;
+                    _lastName = value;
+                }
+                else
+                {
+                    Console.WriteLine($"Ошибка 4");
+                }
+            }
         }
     }
 }
