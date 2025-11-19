@@ -16,7 +16,6 @@ namespace OOP_p511
             Console.WriteLine(student.FullName);
 
             Console.ReadLine();
-
         }
     }
 
