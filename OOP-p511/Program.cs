@@ -6,100 +6,14 @@ using System.Threading.Tasks;
 
 namespace OOP_p511
 {
-    class Rectangle
-    {
-        private double _width;
-        private double _height;
 
-        public double Width
-        {
-            get
-            {
-                return _width;
-            }
-            set
-            {
-                if (value > 0)
-                {
-                    _width = value;
-                }
-                else
-                {
-                    Console.WriteLine("Ошибка: ширина должна быть положительным числом!");
-                }
-            }
-        }
-
-        public double Height
-        {
-            get
-            {
-                return _height;
-            }
-            set
-            {
-                if (value > 0)
-                {
-                    _height = value;
-                }else
-                {
-                    Console.WriteLine("Ошибка: высота должна быть положительным числом");
-                }
-            }
-        }
-
-        public double GetArea
-        {
-            get
-            {
-                return _width * _height;
-            }
-            set
-            {
-                if (0 < value)
-                {
-                    _width = value;
-                    _height = value;
-                }else { Console.WriteLine(false); }
-            }
-        }
-        public double GetPerimetr
-        {
-            get
-            {
-                return 2 * (_width + _height);
-            }
-            set
-            {
-                if (0 < value)
-                {
-                    _width = value;
-                    _height = value;
-                }
-                else { Console.WriteLine(false); }
-            }
-        }
-
-        public Rectangle(double width, double height)
-        {
-            Width = width;
-            Height = height;
-        }
-    }
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Создаеи пряиоугольник");
-            Rectangle rectangle1 = new Rectangle(10, 5);
+            Student student = new Student("Рома", "Елфимов", 14);
 
-            Console.WriteLine($"Ширина: {rectangle1.Width}");
-            Console.WriteLine($"Высота: {rectangle1.Height}");
-            Console.WriteLine($"Площадь: {rectangle1.GetArea}");
-            Console.WriteLine($"Периметр: {rectangle1.GetPerimetr}");
-
-            rectangle1.Width = -20;
-            Console.WriteLine(rectangle1.Width);
+            Console.WriteLine(student.FullName);
 
             Console.ReadLine();
         }
@@ -107,12 +21,90 @@ namespace OOP_p511
 
     public class Student
     {
-        public string firstName;
-        public string lastName;
-        public int age;
+        private string _firstName;
+        private string _lastName;
+        private int _age;
 
-        public void Introduce() {
-            Console.WriteLine($"Привет, меня зовут {firstName} {lastName}, мне {age} лет");
+        public string FirstName
+        {
+            get
+            {
+                return _firstName;
+            }
+            set
+            {
+                if (true)
+                {
+                    value = _firstName;
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка 1");
+                }
+            }
+        }
+        public string LastName
+        {
+            get
+            {
+                return _lastName;
+            }
+            set
+            {
+                if (true)
+                {
+                    value = _lastName;
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка 2");
+                }
+            }
+        }
+        public int Age
+        {
+            get
+            {
+                return _age;
+            }
+            set
+            {
+                if (value > 0 && value < 100)
+                {
+                    _age = value;
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка 3");
+                }
+            }
+        }
+
+        public Student(string firstName, string lastName, int age)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Age = age;
+        }
+
+        public string FullName
+        {
+            get
+            {
+                return FirstName + LastName;
+            }
+            set
+            {
+                if(true)
+                {
+                    _firstName = value;
+                    _lastName = value;
+                }
+                else
+                {
+                    Console.WriteLine($"Ошибка 4");
+                }
+            }
         }
     }
 }
