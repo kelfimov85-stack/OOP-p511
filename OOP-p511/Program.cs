@@ -9,102 +9,55 @@ namespace OOP_p511
 
     internal class Program
     {
+        static int[,] Matrix(int[,] matrix)
+        {
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for(int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write($"[{i+1}, {j+1}]: ");
+                    matrix[i, j] = Convert.ToInt32(Console.ReadLine());
+                }
+            }
+            return matrix;
+        }
+
+        static int[,] MatrixMulti(int[,] matrix1, int[,] matrix2)
+        {
+            int[,] matrixThird = new int[3, 3];
+            for(int i = 0; i < matrix1.GetLength(0); i++)
+            {
+                for(int j = 0; j < matrix2.GetLength(1); j++)
+                {
+                    matrixThird[i,j] = matrix1[i,j] * matrix2[i,j];
+                }
+            }
+            return matrixThird;
+        }
+
         static void Main(string[] args)
         {
-            Student student = new Student("Рома", "Елфимов", 14);
+            int[,] firstMatrix = new int[3, 3];
+            int[,] secondMatrix = new int[3, 3];
 
-            Console.WriteLine(student.FullName);
+            firstMatrix = Matrix(firstMatrix);
+            secondMatrix = Matrix(secondMatrix);
+
+            int[,] matrixThird = MatrixMulti(firstMatrix, secondMatrix);
+            
+           Console.WriteLine();
+
+            for(int i = 0;i < matrixThird.GetLength(0);i++)
+            {
+                for(int j = 0;j < matrixThird.GetLength(1); j++)
+                {
+                    Console.Write($"{matrixThird[i, j]} \t");
+                }
+                Console.WriteLine();
+            }
 
             Console.ReadLine();
         }
     }
-
-    public class Student
-    {
-        private string _firstName;
-        private string _lastName;
-        private int _age;
-
-        public string FirstName
-        {
-            get
-            {
-                return _firstName;
-            }
-            set
-            {
-                if (true)
-                {
-                    value = _firstName;
-                }
-                else
-                {
-                    Console.WriteLine("Ошибка 1");
-                }
-            }
-        }
-        public string LastName
-        {
-            get
-            {
-                return _lastName;
-            }
-            set
-            {
-                if (true)
-                {
-                    value = _lastName;
-                }
-                else
-                {
-                    Console.WriteLine("Ошибка 2");
-                }
-            }
-        }
-        public int Age
-        {
-            get
-            {
-                return _age;
-            }
-            set
-            {
-                if (value > 0 && value < 100)
-                {
-                    _age = value;
-                }
-                else
-                {
-                    Console.WriteLine("Ошибка 3");
-                }
-            }
-        }
-
-        public Student(string firstName, string lastName, int age)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            Age = age;
-        }
-
-        public string FullName
-        {
-            get
-            {
-                return FirstName + LastName;
-            }
-            set
-            {
-                if(true)
-                {
-                    _firstName = value;
-                    _lastName = value;
-                }
-                else
-                {
-                    Console.WriteLine($"Ошибка 4");
-                }
-            }
-        }
-    }
 }
+
