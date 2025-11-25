@@ -11,14 +11,78 @@ namespace OOP_p511
     {
         static void Main(string[] args)
         {
-            User user = new User(25, "re");
-            user.Print(user.Age, user.Name);
-            Console.WriteLine();
+            Student student = new Student(-12, "1212", "21212");
 
-            Phone phone = new Phone(200, "IPhoone", "10 pro");
-            phone.Print(phone.Price, phone.Brand, phone.Model);
-
+            Console.WriteLine(student.FullName);
             Console.ReadLine();
+        }
+    }
+
+    internal class Student
+    {
+        private string _firstName;
+        private string _lastName;
+        private int _age;
+
+        public string FirstName
+        {
+            get
+            {
+                return _firstName;
+            }
+            set
+            {
+                value = _firstName;
+            }
+        }
+        public string LastName
+        {
+            get
+            {
+                return _lastName;
+            }
+            set
+            {
+                value = _lastName;
+            }
+        }
+        public int Age
+        {
+            get
+            {
+                return _age;
+            }
+            set
+            {
+                if (value > 0)
+                {
+                    _age = value;
+                }
+                else
+                {
+                    Console.WriteLine("Ошибка 3");
+                }
+            }
+        }
+
+        public Student(int age, string firstName, string lastName)
+        {
+            _firstName = firstName;
+            _lastName = lastName;
+            _age = age;
+        }
+
+        public string FullName
+        {
+            get
+            {
+                return _firstName + " " + _lastName;
+            }
+            set
+            {
+                _firstName = value;
+                _lastName = value;
+            }
         }
     }
 }
