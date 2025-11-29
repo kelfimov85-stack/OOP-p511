@@ -11,100 +11,13 @@ namespace OOP_p511
     {
         static void Main(string[] args)
         {
-            Student student = new Student("Рома", "Елфимов", 14);
+            Student student = new Student("Name", "01.01.2000", "89220000000", "Moscow", "Russia", "School", "Russia", "Moscow", "511");
+            student.Print();
 
-            Console.WriteLine(student.FullName);
+            Point point = new Point(-43, 32, 2);
+            point.PrintPoint();
 
             Console.ReadLine();
-        }
-    }
-
-    public class Student
-    {
-        private string _firstName;
-        private string _lastName;
-        private int _age;
-
-        public string FirstName
-        {
-            get
-            {
-                return _firstName;
-            }
-            set
-            {
-                if (true)
-                {
-                    value = _firstName;
-                }
-                else
-                {
-                    Console.WriteLine("Ошибка 1");
-                }
-            }
-        }
-        public string LastName
-        {
-            get
-            {
-                return _lastName;
-            }
-            set
-            {
-                if (true)
-                {
-                    value = _lastName;
-                }
-                else
-                {
-                    Console.WriteLine("Ошибка 2");
-                }
-            }
-        }
-        public int Age
-        {
-            get
-            {
-                return _age;
-            }
-            set
-            {
-                if (value > 0 && value < 100)
-                {
-                    _age = value;
-                }
-                else
-                {
-                    Console.WriteLine("Ошибка 3");
-                }
-            }
-        }
-
-        public Student(string firstName, string lastName, int age)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            Age = age;
-        }
-
-        public string FullName
-        {
-            get
-            {
-                return FirstName + LastName;
-            }
-            set
-            {
-                if(true)
-                {
-                    _firstName = value;
-                    _lastName = value;
-                }
-                else
-                {
-                    Console.WriteLine($"Ошибка 4");
-                }
-            }
         }
     }
 }
