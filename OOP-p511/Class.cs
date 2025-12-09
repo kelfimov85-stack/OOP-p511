@@ -1,96 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOP_p511
+namespace p511_oop
 {
-    internal abstract class Transport
+    internal abstract class Document
     {
-        protected double speed;
-        protected double costPerKm;
-        protected int passengerCapasity;
-        protected double cargoCapacity;
+        protected string author;
+        protected string content;
 
-        protected Transport(double speed, double costPerKm, int passengerCapasity, double cargoCapacity)
+        protected Document(string author, string content)
         {
-            this.speed = speed;
-            this.costPerKm = costPerKm;
-            this.passengerCapasity = passengerCapasity;
-            this.cargoCapacity = cargoCapacity;
+            this.author = author;
+            this.content = content;
         }
 
-        public abstract double CalculateTime(double distance);
-        public abstract double CalculateCostPerKm(double distance, int passenger, double cargo);
+        public abstract void Render();
     }
 
-    internal class Car : Transport
+    class ImageDocument : Document
     {
-        public Car() : base(80, 15, 4, 0.5) { }
+        public ImageDocument(string content, string author) : base(content, author) { }
 
-        public override double CalculateTime(double distance)
+        public override void Render()
         {
-            return distance / speed;
-        }
-
-        public override double CalculateCostPerKm(double distance, int passenger, double cargo)
-        {
-            if (passenger > 4 || passenger < 0)
-            {
-                return 0;
-            }
-            else
-            {
-
-                return (distance * costPerKm) + (passenger * 100) + (cargo + 500);
-            }
+            Console.WriteLine("----------");
+            Console.Write("[Изображение]:");
+            Console.WriteLine($"Автор: {author}");
+            Console.WriteLine($"Разрешение: {content}");
+            Console.WriteLine("----------");
         }
     }
 
-    internal class Cart : Transport
+    class TextDocument : Document
     {
-        public Cart() : base(50, 5, 8, 0.3) { }
+        public TextDocument(string content, string author) : base(content, author) { }
 
-        public override double CalculateTime(double distance)
+        public override void Render()
         {
-            return distance / speed;
-        }
-
-        public override double CalculateCostPerKm(double distance, int passenger, double cargo)
-        {
-            if (passenger > 8 || passenger < 0)
-            {
-                return 0;
-            }
-            else
-            {
-
-                return (distance * costPerKm) + (passenger * 100) + (cargo + 500);
-            }
-        }
-    }
-
-    internal class Bike : Transport
-    {
-        public Bike() : base(15, 5, 2, 0.02) { }
-
-        public override double CalculateTime(double distance)
-        {
-            return distance / speed;
-        }
-
-        public override double CalculateCostPerKm(double distance, int passenger, double cargo)
-        {
-            if (passenger > 2 || passenger < 0)
-            {
-                return 0;
-            }
-            else
-            {
-
-                return (distance * costPerKm) + (passenger * 100) + (cargo + 500);
-            }
+            Console.WriteLine("----------");
+            Console.Write("[Текст]:");
+            Console.WriteLine($"Автор: {author}");
+            Console.WriteLine($"Содержание: {content}");
+            Console.WriteLine("----------");
         }
     }
 }

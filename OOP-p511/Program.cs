@@ -1,4 +1,5 @@
-﻿using System;
+﻿using p511_oop;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,21 +15,16 @@ namespace OOP_p511
 
         static void Main(string[] args)
         {
-            List<Transport> list = new List<Transport>();
+
+            List<Document> documents = new List<Document>()
             {
-                new Car();
-                new Bike();
-                new Cart();
+                new TextDocument("Пушкин", "Жили были не тужили"),
+                new ImageDocument("Пабло Пикассо", "1920x1080")
             };
 
-            double distance = 100;
-            int passenger = 2;
-            double cargo = 0.4;
-
-            foreach (Transport t in list)
+            foreach (Document document in documents)
             {
-                Console.WriteLine($"Время: {t.CalculateTime(distance)}");
-                Console.WriteLine($"Стоимость {t.CalculateCostPerKm(distance, passenger, cargo)}");
+                document.Render();
             }
 
             Console.ReadLine();
