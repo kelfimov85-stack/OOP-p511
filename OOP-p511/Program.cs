@@ -15,16 +15,43 @@ namespace OOP_p511
 
         static void Main(string[] args)
         {
-
-            List<Document> documents = new List<Document>()
+            List<Human> humans = new List<Human>()
             {
-                new TextDocument("Пушкин", "Жили были не тужили"),
-                new ImageDocument("Пабло Пикассо", "1920x1080")
+                new Builder("Константин", "мужчина", 19),
+                new Sailor("Ваня", "мужчина", 37),
+                new Pilot("Катерина", "женщина", 28),
+                new Sailor("Вика", "женщина", 44)
             };
 
-            foreach (Document document in documents)
+            foreach(Human human in humans)
             {
-                document.Render();
+                human.Performance();
+                human.Work();
+            }
+
+
+            List<Animal> animals = new List<Animal>()
+            {
+                new Tiger("Кира", "Хищник", 14),
+                new Kenguru("Ваня", "Травоядный", 2),
+                new Crocodil("Егор", "Хищник", 5)
+            };
+
+            foreach(Animal animal in animals)
+            {
+                animal.Perfomance();
+            }
+
+            List<Geometry> fi = new List<Geometry>()
+            {
+                new Rectangle(2,3),
+                new Triangle(4,5.4),
+                new Circle(3.14),
+                new Trapezoid(4.2,3,3.2)
+            };
+            foreach (Geometry geom in fi)
+            {
+                Console.WriteLine(geom.Area());
             }
 
             Console.ReadLine();
