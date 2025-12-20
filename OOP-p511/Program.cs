@@ -15,44 +15,23 @@ namespace OOP_p511
 
         static void Main(string[] args)
         {
-            List<Human> humans = new List<Human>()
+            try
             {
-                new Builder("Константин", "мужчина", 19),
-                new Sailor("Ваня", "мужчина", 37),
-                new Pilot("Катерина", "женщина", 28),
-                new Sailor("Вика", "женщина", 44)
-            };
-
-            foreach(Human human in humans)
+                int[] massiv = { 1, 2, 3, 4, 5, };
+                int i = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine(i);
+            }catch(IndexOutOfRangeException ex) 
             {
-                human.Performance();
-                human.Work();
+                Console.WriteLine(ex.Message);
+            }finally 
+            {
+                Console.WriteLine("Операция выполлнена");
             }
 
+            //int num1 = Convert.ToInt32(Console.ReadLine());
+            //int num2 = Convert.ToInt32(Console.ReadLine());
 
-            List<Animal> animals = new List<Animal>()
-            {
-                new Tiger("Кира", "Хищник", 14),
-                new Kenguru("Ваня", "Травоядный", 2),
-                new Crocodil("Егор", "Хищник", 5)
-            };
-
-            foreach(Animal animal in animals)
-            {
-                animal.Perfomance();
-            }
-
-            List<Geometry> fi = new List<Geometry>()
-            {
-                new Rectangle(2,3),
-                new Triangle(4,5.4),
-                new Circle(3.14),
-                new Trapezoid(4.2,3,3.2)
-            };
-            foreach (Geometry geom in fi)
-            {
-                Console.WriteLine(geom.Area());
-            }
+            //Console.WriteLine(num1/num2);
 
             Console.ReadLine();
         }
