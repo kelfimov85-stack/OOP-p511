@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace OOP_p511
 {
@@ -15,18 +16,10 @@ namespace OOP_p511
 
         static void Main(string[] args)
         {
-            try
-            {
-                int[] massiv = { 1, 2, 3, 4, 5, };
-                int i = Convert.ToInt32(Console.ReadLine());
-                Console.WriteLine(i);
-            }catch(IndexOutOfRangeException ex) 
-            {
-                Console.WriteLine(ex.Message);
-            }finally 
-            {
-                Console.WriteLine("Операция выполлнена");
-            }
+            const string FILE_PATH = "C:\\Users\\user\\Desktop";
+            StudentManager studentManager = new StudentManager();
+
+            studentManager.AddStudent(new Student("GOYDA", 23, 4.3));
 
             //int num1 = Convert.ToInt32(Console.ReadLine());
             //int num2 = Convert.ToInt32(Console.ReadLine());
