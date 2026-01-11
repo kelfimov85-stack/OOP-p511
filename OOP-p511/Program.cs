@@ -1,5 +1,4 @@
-﻿using p511_oop;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +7,11 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Text.Json;
+using System.Net.Http;
+
+//JSON - JavaScript Object Notation
+//API - Application Programming Interface
 
 namespace OOP_p511
 {
@@ -16,16 +20,15 @@ namespace OOP_p511
 
         static void Main(string[] args)
         {
-            const string FILE_PATH = "C:\\Users\\user\\Desktop";
-            StudentManager studentManager = new StudentManager();
+            const string URL = "https://jsonplaceholder.org/posts";
 
-            studentManager.AddStudent(new Student("GOYDA", 23, 4.3));
+            HttpClient client = new HttpClient();
 
-            //int num1 = Convert.ToInt32(Console.ReadLine());
-            //int num2 = Convert.ToInt32(Console.ReadLine());
+            client.BaseAddress = new Uri(URL);
 
-            //Console.WriteLine(num1/num2);
+            var respons = client.GetAsync(URL).Result;
 
+            Console.WriteLine(respons);
             Console.ReadLine();
         }
     }
