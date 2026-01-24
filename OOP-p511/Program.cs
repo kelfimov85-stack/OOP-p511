@@ -12,23 +12,31 @@ using System.Net.Http;
 
 //JSON - JavaScript Object Notation
 //API - Application Programming Interface
+//HTTP - HyperText Transfer Protocol
 
 namespace OOP_p511
 {
+    class User
+    {
+        string Id { get; set; }
+        string Name { get; set; }
+        string LastName { get; set; }
+        string Email { get; set; }
+        string BirthDate { get; set; }
+        string Phone { get; set; }
+        string WebSite {  get; set; }
+
     internal class Program
     {
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            const string URL = "https://jsonplaceholder.org/posts";
+            using (HttpClient client = new HttpClient())
+                {
+                    client.BaseAddress = new Uri("https://jsonplaceholder.org/posts");
 
-            HttpClient client = new HttpClient();
-
-            client.BaseAddress = new Uri(URL);
-
-            var respons = client.GetAsync(URL).Result;
-
-            Console.WriteLine(respons);
+                    User user = client.Get
+                }
             Console.ReadLine();
         }
     }
