@@ -8,36 +8,64 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Text.Json;
+using System.Net.Http.Json;
 using System.Net.Http;
 
 //JSON - JavaScript Object Notation
 //API - Application Programming Interface
 //HTTP - HyperText Transfer Protocol
+//Dto - Data Transfer Object
 
 namespace OOP_p511
 {
-    class User
+    public class RegDto
     {
-        string Id { get; set; }
-        string Name { get; set; }
-        string LastName { get; set; }
-        string Email { get; set; }
-        string BirthDate { get; set; }
-        string Phone { get; set; }
-        string WebSite {  get; set; }
-
-    internal class Program
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+    }
+    public class UserDto
     {
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Email { get; set; }
 
-        static async Task Main(string[] args)
+        internal class Program
         {
-            using (HttpClient client = new HttpClient())
-                {
-                    client.BaseAddress = new Uri("https://jsonplaceholder.org/posts");
+            private static readonly HttpClient _httpClient = new HttpClient()
+            {
+                BaseAddress = new Uri("http://localhost:8080")
+            };
 
-                    User user = client.Get
+            static async Task Main(string[] args)
+            {
+                List <UserDto> users = await _httpClient.GetFromJsonAsync<List<UserDto>>("/api/users");
+
+                if (users is null)
+                {
+                    Console.WriteLine("Пустой ответ");
+                    return;
                 }
-            Console.ReadLine();
+
+                foreach (var user in users)
+                {
+                    Console.WriteLine(user.Username);
+                }
+
+                var newUser = new RegDto()
+                {
+                    Username = "Gas123",
+                    Email = "Gas123@gmail.com",
+                    Password = "1221"
+                };
+
+                HttpResponseMessage responce = await _httpClient.PostAsJsonAsync("/api/auth/register", newUser);
+
+                RegDto created = await responce.Content.ReadFromJsonAsync<RegDto>();
+                Console.WriteLine($"{created.Username}");
+
+                Console.ReadLine();
+            }
         }
     }
 }
